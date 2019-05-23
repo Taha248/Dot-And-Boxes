@@ -16,8 +16,9 @@ class gameMinimax():
         self.playerWin=False
         self.AIPlayerName="AI"
         self.playerWinningState=[]
-  
+        self.k=0
     def minimaxAlgo(self,state,isMax):
+        self.k+=1
         self.win=False
         self.playerWin=False
         AIMoves,m,secondBestMove=[],[],[]
@@ -29,6 +30,8 @@ class gameMinimax():
            # print(change)
             if self.utility.calculateUtility(move,change[0],change[1],change[2],isMax)==1000:
                 self.score+=10
+                #print(self.k)
+                #print(self.score)
                 self.win=True
                 #print("PC Score="+str(self.score))
                 array=self.game.addAlphabet(move,change[0],change[1],change[2],self.AIPlayerName)
