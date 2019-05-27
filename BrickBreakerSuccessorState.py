@@ -9,6 +9,11 @@ import copy
 class BrickBreakerSuccessorState():
     def __init__(self):pass
     
+
+# =============================================================================
+# Below function generates Successor Nodes from each 2d state
+# =============================================================================
+
     def successorState(self,arr):
         nextMoves=[]
         for x in range(len(arr)):

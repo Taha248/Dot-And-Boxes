@@ -11,14 +11,29 @@ class gameMinimax():
         self.game=game
         self.utility=utility
         self.successorState =successorState
-        self.score=0
         self.win=False
         self.playerWin=False
         self.AIPlayerName="AI"
         self.playerWinningState=[]
-        self.k=0
+        
+        
+    
+
+
+# =============================================================================
+# Below function uses minMax Algorithm to compute the best possible state 
+# Note : This is MinMax Algorithm for depth level 2 
+# Algorithm :
+#        The Function Takes two Argument i.e 
+#        Current State : current state through which we will compute next moves
+#        isMax         : True = AI move , False = Player move 
+#   1) Fetch the Successor States First
+#    2)  if it gives Maximum utility then return that move
+#    3)  if it does not then take each move and generate successor moves
+#    4)  return the Move that gives the minimum utlity for player move
+# =============================================================================
+        
     def minimaxAlgo(self,state,isMax):
-        self.k+=1
         self.win=False
         self.playerWin=False
         AIMoves,m,secondBestMove=[],[],[]
@@ -29,11 +44,9 @@ class gameMinimax():
             change= self.successorState.getStateChange(state,move)
            # print(change)
             if self.utility.calculateUtility(move,change[0],change[1],change[2],isMax)==1000:
-                self.score+=10
                 #print(self.k)
                 #print(self.score)
                 self.win=True
-                #print("PC Score="+str(self.score))
                 array=self.game.addAlphabet(move,change[0],change[1],change[2],self.AIPlayerName)
                 return array
             
